@@ -43,12 +43,7 @@ fn main() {
         .whitelist_type("_?PseudoTcp.+")
         // Disable recursive whitelisting, we're using libc, glib-sys, etc.
         .whitelist_recursively(false)
-        .clang_args(
-            libnice
-                .include_paths
-                .iter()
-                .map(|path| format!("-I{}", path.to_string_lossy())),
-        )
+        .clang_args(&["-I./usr/include"])
         .generate()
         .expect("Unable to generate bindings");
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
