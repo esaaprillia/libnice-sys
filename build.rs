@@ -27,22 +27,22 @@ fn main() {
              #include <nice/pseudotcp.h>",
         )
         // ICE Library
-        .whitelist_function("nice_.+")
-        .whitelist_type("NICE.+")
-        .whitelist_type("_?Nice.+")
-        .whitelist_type("_?TurnServer")
+        .allowlist_function("nice_.+")
+        .allowlist_type("NICE.+")
+        .allowlist_type("_?Nice.+")
+        .allowlist_type("_?TurnServer")
         // STUN Library
-        .whitelist_function("stun_.+")
-        .whitelist_type("STUN.+")
-        .whitelist_type("TURN.+")
-        .whitelist_type("_?[Ss]tun.+")
+        .allowlist_function("stun_.+")
+        .allowlist_type("STUN.+")
+        .allowlist_type("TURN.+")
+        .allowlist_type("_?[Ss]tun.+")
         // contains `va_list` type argument which seems like it might not be handled properly
         .opaque_type("StunDebugHandler")
         // Pseudo TCP Socket implementation
-        .whitelist_function("pseudo_tcp_.+")
-        .whitelist_type("_?PseudoTcp.+")
+        .allowlist_function("pseudo_tcp_.+")
+        .allowlist_type("_?PseudoTcp.+")
         // Disable recursive whitelisting, we're using libc, glib-sys, etc.
-        .whitelist_recursively(false)
+        .allowlist_recursively(false)
         .clang_args(
             libnice
                 .include_paths
