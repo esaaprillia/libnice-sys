@@ -44,12 +44,12 @@ fn main() {
         // Disable recursive whitelisting, we're using libc, glib-sys, etc.
         .whitelist_recursively(false)
         .clang_args(&[
-        "-I${STAGING_DIR}/usr/include",
-        "-I${STAGING_DIR}/usr/include/nice",
-        "-I${STAGING_DIR}/usr/include/stun",
-        "-I${STAGING_DIR}/usr/include/glib-2.0",
-        "-I${STAGING_DIR}/usr/include/glib-2.0/gio",
-        "-I${STAGING_DIR}/usr/include/glib-2.0/gobject",
+        "-I/root/glibc/staging_dir/target-aarch64_generic_glibc/usr/include",
+        "-I/root/glibc/staging_dir/target-aarch64_generic_glibc/usr/include/nice",
+        "-I/root/glibc/staging_dir/target-aarch64_generic_glibc/usr/include/stun",
+        "-I/root/glibc/staging_dir/target-aarch64_generic_glibc/usr/include/glib-2.0",
+        "-I/root/glibc/staging_dir/target-aarch64_generic_glibc/usr/include/glib-2.0/gio",
+        "-I/root/glibc/staging_dir/target-aarch64_generic_glibc/usr/include/glib-2.0/gobject",
     ])
         .generate()
         .expect("Unable to generate bindings");
